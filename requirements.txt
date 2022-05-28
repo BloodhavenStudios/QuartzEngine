@@ -1,3 +1,7 @@
 colorama
 getkey
+pillow
 fonts
+font-amatic-sc
+font-roboto
+font-caladea

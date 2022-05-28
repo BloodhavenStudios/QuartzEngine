@@ -41,5 +41,13 @@ pip install git+https://github.com/BloodhavenStudios/QuartzEngine
 ## Examples
 View all of our examples [here](https://github.com/BloodhavenStudios/QuartzEngine/tree/main/examples)
 
+## Contributing 
+If you gave a suggestion that would make this better, please fork the repo and create a pull request. Dont forget to give the project a star!
+1. Fork the project.
+2. Create your feature branch
+3. Commit your changes
+4. push to branch
+
+
 ## License
 This product is under the MIT License

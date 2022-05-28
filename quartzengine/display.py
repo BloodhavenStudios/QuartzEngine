@@ -4,14 +4,19 @@ from time import sleep
 import os
 
 from PIL import ImageFont
-from fonts.ttf import AmaticSC
+from fonts.ttf import (
+  AmaticSC,
+  Roboto,
+  Caladea
+)
 
 __all__ = ("display", "Display")
-font = ImageFont.truetype(AmaticSC)
 
 class display(object):
 
   def __init__(self):
+    self.fonts = ["AmaticSC", "Roboto", "Caladea"]
+    
     self.red = self.red()
     self.yellow = self.yellow()
     self.green = self.green()
@@ -54,7 +59,14 @@ class display(object):
     if os.name == "nt":  os.system("cls")
     else:  os.system("clear")
 
-  def write(self, string, delay=0.05):
+  def set_font(self, font=None):
+
+    if font == None:  raise SetFontError(message="Failed to set font: None")
+    if font not in self.fonts:  raise SetFontError(message="Font: {}, is not a valid font.".format(font))
+    else:
+      ImageFont.truetype(font)
+
+  def write(self, string=None, delay=0.05):
     for character in string:
       stdout.write(character)
       stdout.flush()
