@@ -1,76 +1,45 @@
 <div align="center">
 
-<br>
-<p></p>
+<img src="https://cdn.discordapp.com/attachments/973602611179712532/976310681655734303/quartzenginelogo.png" width="200" alt="Quartz Engine"/>
+<h1>Quartz Engine</h1>
 
-<a href="https://google.com">
-    <img src="https://google.com" width="500" alt="Quartz Engine"/>
-</a>
+<div>
+    <img src="https://travis-ci.com/BloodhavenStudios/QuartzEngine.svg?branch=master" alt="Build Status">
+</div>
 
-<p></p>
+</div>
 
-<br>
 
-Quartz Engine
-=
-A **game engine** for making advanced **text-based games**.
 
-<br>
+<p><h3>An advanced game-engine for creating advanced text-based games in the terminal.</h3></p>
 
-Features
--
-Animations
-<p></p>
-Scenes
-<p></p>
-Game Objects
-<p></p>
-Prefabs
-<p></p>
-Fluent scripting
-<p></p>
-Menus
-<p></p>
-Colored text
+## Welcome!
+Many text-based games are cool, but they are missing so many things like: colored text, animations, cool printing methods. so we made a library for making text-based games!
 
-<br>
+This project is open source 😎
 
-Examples
--
+Also, there is an [official discord server](https://discord.gg/nGZ3pH5Rq3), so
+if you have any questions, feel free to ask it on this server.
 
-<br>
+## Features
+- Animations
+- Scenes
+- Game Objects
+- Prefabs
+- Fluent scripting
+- Menus
+- Colored text
 
-<style>
-.button {
-    background-color: #9EA6B2;
-    padding: 15px;
-    width: 125px;
-    border-radius: 10px;
-    transition: transform .5s;
-}
-.button:hover {
-    transform: scale(1.3);
-}
-</style>
+## Docs
+Come read the docs [here](https://bloodhavenstudios2020.gitbook.io/quartzengine-docs/)
 
-<a href="https://replit.com/@CodeWithMatthew/QuartzEngine#QuartzEngine/examples/main_menu.py">
-    <button class="button">
-        Menu
-    </button>
-</a>
+## Install
+```
+pip install git+https://github.com/BloodhavenStudios/QuartzEngine
+```
 
-<p></p>
+## Examples
+View all of our examples [here](https://github.com/BloodhavenStudios/QuartzEngine/tree/main/examples)
 
-<a href="https://replit.com/@CodeWithMatthew/QuartzEngine#QuartzEngine/examples/tictactoe.py">
-    <button class="button">
-        TicTacToe
-    </button>
-</a>
-
-<p></p>
-
-<a href="https://replit.com/@CodeWithMatthew/QuartzEngine#QuartzEngine/examples/dungeons.py">
-    <button class="button">
-        Dungeons
-    </button>
-</a>
+## License
+This product is under the MIT License
