@@ -58,7 +58,7 @@ class Engine(object):
   def setup(self):
     pass
 
-  def root(self): Q  
+  def root(self):
     print("Default Scene")
 
   def set_scene(self, scene=None):
