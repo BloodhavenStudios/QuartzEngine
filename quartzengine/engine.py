@@ -7,15 +7,7 @@ from sys import stdout
 from time import sleep
 from getkey import getkey, keys
 
-__all__ = ("Scene", "Switch", "Engine")
-
-class Scene(object):
-    
-  def __init__(self, name):
-    self.name = name
-
-  def is_scene(self):
-    return True
+__all__ = ("Switch", "Engine")
 
 class Switch(object):
 

@@ -32,7 +32,7 @@ setup(
   version=VERSION,
   author="Bloodhaven Studios",
   author_email="",
-  description="A game-engine for creating advanced text-based games in the terminal.",
+  description="An advanced game-engine for creating advanced text-based games in the terminal.",
   extras_require=extras,
   include_package_data=True,
   install_requires=requirements,

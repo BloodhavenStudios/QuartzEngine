@@ -4,7 +4,7 @@ from QuartzEngine.menu import Menu             # Makes menu
 
 class Game(Engine):
   
-  def setscenes(self):
+  def setup(self):
     self.scenes = [self.menu]
 
   def menu(self):
@@ -19,4 +19,6 @@ class Game(Engine):
     menu.on_use(1, action=lambda: print("play"))
     menu.on_use(2, action=lambda: print("Quit"))
 
-Game.title = ""
+app = Game()
+app.title = "Main Menu Example"
+app.start()
