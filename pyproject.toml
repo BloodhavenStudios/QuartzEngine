@@ -9,7 +9,7 @@ name = "QuartzEngine"
 version = "0.0.4"
 description = "An advanced game-engine for creating advanced text-based games in the terminal."
 readme = "README.md"
-authors = [{ name = "BloodhavenStudios", email = "" }]
+authors = [{ name = "BloodhavenStudios", email = "bloodhavenstudios2020@gmail.com" }]
 license = { file = "LICENSE" }
 classifiers = [
     "Intended Audience :: Developers",
