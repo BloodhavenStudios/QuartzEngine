@@ -3,7 +3,11 @@ from sys import stdout
 from time import sleep
 import os
 
+from PIL import ImageFont
+from fonts.ttf import AmaticSC
+
 __all__ = ("display", "Display")
+font = ImageFont.truetype(AmaticSC)
 
 class display(object):
 
