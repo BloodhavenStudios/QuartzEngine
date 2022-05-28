@@ -5,6 +5,7 @@ from quartzengine import engine
 from quartzengine import display as quartz
 
 red = quartz.Display.red
+red = quartz.Display.red
 blue = quartz.Display.blue
 reset = quartz.Display.reset
 

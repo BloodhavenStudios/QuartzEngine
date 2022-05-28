@@ -25,8 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
-    "html2text",
-    'tomli; python_version < "3.11"',
+    "getkey"
 ]
 requires-python = ">=3.9"
 
