@@ -41,13 +41,14 @@ setup(
   long_description_content_type="text/markdown",
   url="https://replit.com/CodeWithMatthew/QuartzEngine",
   packages=["quartzengine"],
-  python_requires=">=3.9",
+  python_requires=">=3.8",
   classifiers=[
     "Intended Audience :: Developers",
     "Lincense :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9"
     "Topic :: Internet",
     "Topic :: Software Development :: Libaries :: Python Modules",
     "Topic :: Software Development :: Libaries",
