@@ -1,13 +1,26 @@
 
 __all__ = (
   "QuartzEngineException",
+    "SceneException",
     "RestException",
+  "DisplayException",
+    "SetFontException",
   "ClientException"
 )
 
 class QuartzEngineException(Exception):
   pass
 
+class SceneException(QuartzEngineException):
+
+  def __init__(self, scene, message="Scene: {}, not a valid scene."):
+    self.scene = scene
+    self.message = message
+    super().__init__(self.message)
+
+  def __str__(self):
+    return self.message.format(self.scenee)
+  
 # If duration is not provided
 class RestException(QuartzEngineException):
 
@@ -18,7 +31,21 @@ class RestException(QuartzEngineException):
 
   def __str__(self):
     return self.message.format(self.duration)
-  
+
+
+
+class DisplayException(Exception):
+  pass
+
+class SetFontException(DisplayException):
+
+  def __init__(self, message):
+    self.message = message
+    super().__init__(self.message)
+
+  def __str__(self):
+    return self.message
+    
 #idk the errors to add
 class ClientException(QuartzEngineException):
   pass

@@ -2,6 +2,7 @@ from colorama import Fore
 from sys import stdout
 from time import sleep
 import os
+from .errorhandler import *
 
 from PIL import ImageFont
 from fonts.ttf import (
@@ -61,8 +62,8 @@ class display(object):
 
   def set_font(self, font=None):
 
-    if font == None:  raise SetFontError(message="Failed to set font: None")
-    if font not in self.fonts:  raise SetFontError(message="Font: {}, is not a valid font.".format(font))
+    if font == None:  raise SetFontException(message="Failed to set font: None")
+    if font not in self.fonts:  raise SetFontException(message="Font: {}, is not a valid font.".format(font))
     else:
       ImageFont.truetype(font)
 

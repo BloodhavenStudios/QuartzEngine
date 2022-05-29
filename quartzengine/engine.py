@@ -54,6 +54,10 @@ class Engine(object):
     print("Default Scene")
 
   def set_scene(self, scene=None):
+    try:
+      a = self.scenes[scene] 
+    except:
+      raise SceneException(scene)
     if scene == None:
       if self.current_scene != len(self.scenes):
         self.current_scene += 1
