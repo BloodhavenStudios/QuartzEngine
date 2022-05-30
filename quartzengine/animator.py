@@ -1,16 +1,19 @@
 from sys import stdout
 from time import sleep
-from .display import Display
+from .display import display
 from .errorhandler import *
 
 __all__ = ("Animation")
 
 class Animation(object):
 
-  def __init__(self, animation=None):
+  def __init__(self, engine=None, animation=None):
     self.animation = animation
-
+    self.engine = engine
+  
   def process_errors(self):
+    if self.engine == None:
+      raise AnimationException(message="Engine is NoneType.")
     if self.animation == None:
       raise AnimationException(message="Animation is NoneType.")
     if self.animation == []:
@@ -21,7 +24,7 @@ class Animation(object):
     
     for i in range(loop):
       for frame in self.animation:
-        Display.clear()
+        self.engine.Display.clear()
         print(f"{frame}")
         sleep(delay_between_frames)
       Display.clear()
