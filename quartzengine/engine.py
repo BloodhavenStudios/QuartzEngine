@@ -7,22 +7,7 @@ from sys import stdout
 from time import sleep
 from getkey import getkey, keys
 
-__all__ = ("Switch", "Engine")
-
-class Switch(object):
-
-    def __init__(self, toggle1, toggle2):
-      self.toggles = [toggle1, toggle2]
-      self.current_switch = 1
-      self.toggle()
-
-    def get(self):
-      return self.toggles[self.current_switch]
-    
-    def toggle(self):
-      if self.current_switch == 0:  self.current_switch += 1
-      else:  self.current_switch = 0
-      return self.toggles[self.current_switch]
+__all__ = ("Engine")
 
 class Engine(object):
 
@@ -36,7 +21,7 @@ class Engine(object):
 
   def __init__(self):
     self.name = f"QuartzEngine | {os.path.basename(__file__)}"
-    self.display = 
+    self.Display = display()
 
     self.keys = {"a": "a", "b": "b", "c": "c", "d": "d", "e": "e",
                  "f": "f", "g": "g", "h": "h", "i": "i", "j": "j",
