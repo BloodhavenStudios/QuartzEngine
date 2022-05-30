@@ -14,7 +14,7 @@ from fonts.ttf import (
 class display(object):
 
   def __init__(self):
-    self.fonts = ["AmaticSC", "Roboto", "Caladea"]
+    self.fonts = {"AmaticSC": AmaticSC, "Roboto": Roboto, "Caladea": Caladea}
     
     self.red = self.red()
     self.yellow = self.yellow()
@@ -58,12 +58,12 @@ class display(object):
     if os.name == "nt":  os.system("cls")
     else:  os.system("clear")
 
-  def set_font(self, font=None):
+  def set_font(self, font: str = None):
 
     if font == None:  raise SetFontException(message="Failed to set font: None")
-    if font not in self.fonts:  raise SetFontException(message="Font: {}, is not a valid font.".format(font))
+    if font not in self.fonts.keys():  raise SetFontException(message="Font: {}, is not a valid font.".format(font))
     else:
-      ImageFont.truetype(font)
+      ImageFont.truetype(self.fonts[font])
 
   def write(self, string=None, delay=0.05):
     for character in string:
