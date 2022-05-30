@@ -7,8 +7,6 @@ from sys import stdout
 from time import sleep
 from getkey import getkey, keys
 
-__all__ = ("Engine")
-
 class Engine(object):
 
   @property
