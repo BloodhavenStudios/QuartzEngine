@@ -1,6 +1,3 @@
-
-__all__ = ("Switch")
-
 class Switch(object):
 
     def __init__(self, toggle1, toggle2):
