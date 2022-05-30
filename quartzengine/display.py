@@ -11,7 +11,7 @@ from fonts.ttf import (
   Caladea
 )
 
-__all__ = ("display", "Display")
+__all__ = ("display")
 
 class display(object):
 
@@ -73,5 +73,3 @@ class display(object):
       stdout.flush()
       sleep(delay)
     print("")
-
-Display = display()

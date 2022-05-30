@@ -1,4 +1,4 @@
-from .display import Display
+from .display import display
 from .errorhandler import *
 
 import json
@@ -36,6 +36,7 @@ class Engine(object):
 
   def __init__(self):
     self.name = f"QuartzEngine | {os.path.basename(__file__)}"
+    self.display = 
 
     self.keys = {"a": "a", "b": "b", "c": "c", "d": "d", "e": "e",
                  "f": "f", "g": "g", "h": "h", "i": "i", "j": "j",
