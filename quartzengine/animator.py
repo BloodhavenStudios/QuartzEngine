@@ -1,9 +1,6 @@
 from sys import stdout
 from time import sleep
-from .display import display
 from .errorhandler import *
-
-__all__ = ("Animation")
 
 class Animation(object):
 
