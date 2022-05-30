@@ -38,22 +38,22 @@ class Engine(object):
     print("Default Scene")
 
   def set_scene(self, scene=None):
+    if scene == None:
+      if self.current_scene != len(self.scenes):
+        self.current_scene += 1
+        print(self.Display.reset + "")
+        self.Display.clear()
+        self.scenes[self.current_scene]()
+    else:
+      if scene != len(self.scenes):
+        print(self.Display.reset)
+        self.Display.clear()
+        self.current_scene = scene
+        self.scenes[scene]()
     try:
       a = self.scenes[scene] 
     except:
       raise SceneException(scene)
-    if scene == None:
-      if self.current_scene != len(self.scenes):
-        self.current_scene += 1
-        print(Display.reset + "")
-        Display.clear()
-        self.scenes[self.current_scene]()
-    else:
-      if scene != len(self.scenes):
-        print(Display.reset)
-        Display.clear()
-        self.current_scene = scene
-        self.scenes[scene]()
 
   def getkey(self):
     key = getkey()
