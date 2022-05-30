@@ -11,8 +11,6 @@ from fonts.ttf import (
   Caladea
 )
 
-__all__ = ("display")
-
 class display(object):
 
   def __init__(self):
