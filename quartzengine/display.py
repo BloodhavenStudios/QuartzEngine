@@ -5,16 +5,17 @@ import os
 from .errorhandler import *
 
 from PIL import ImageFont
-from fonts.ttf import (
-  AmaticSC,
-  Roboto,
-  Caladea
-)
+#### Check snipy edit
+from fonts.ttf import AmaticSC
+font = ImageFont.truetype(AmaticSC)
+####
 
 class display(object):
 
   def __init__(self):
+    #### Check snipy edit
     self.fonts = {"AmaticSC": AmaticSC, "Roboto": Roboto, "Caladea": Caladea}
+    ####
     
     self.red = self.red()
     self.yellow = self.yellow()
@@ -61,9 +62,11 @@ class display(object):
   def set_font(self, font: str = None):
 
     if font == None:  raise SetFontException(message="Failed to set font: None")
+    #### check snipy edit
     if font not in self.fonts.keys():  raise SetFontException(message="Font: {}, is not a valid font.".format(font))
     else:
       ImageFont.truetype(self.fonts[font])
+    ####
 
   def write(self, string=None, delay=0.05):
     for character in string:
