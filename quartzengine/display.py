@@ -5,17 +5,16 @@ import os
 from .errorhandler import *
 
 from PIL import ImageFont
-#### Check snipy edit
-from fonts.ttf import AmaticSC
-font = ImageFont.truetype(AmaticSC)
-####
+from fonts.ttf import (
+  AmaticSC,
+  Roboto,
+  Caladea
+)
 
 class display(object):
 
   def __init__(self):
-    #### Check snipy edit
     self.fonts = {"AmaticSC": AmaticSC, "Roboto": Roboto, "Caladea": Caladea}
-    ####
     
     self.red = self.red()
     self.yellow = self.yellow()

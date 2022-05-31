@@ -1,4 +1,3 @@
-from threading import Thread
 from time import sleep
 
 __all__ = ("Switch", "loops")
@@ -18,7 +17,7 @@ class Switch(object):
       else:  self.current_switch = 0
       return self.toggles[self.current_switch]
 
-class loops(Thread):
+class loops(object):
 
   @property
   def seconds(self):
@@ -29,7 +28,7 @@ class loops(Thread):
     self.seconds = value
 
   def __init__(self):
-    self.seconds = 0
+    self.seconds = 0.0
     self.task = self.loop
 
   def loop(self):
