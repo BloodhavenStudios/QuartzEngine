@@ -60,12 +60,12 @@ class display(object):
 
   def set_font(self, font: str = None):
 
-    if font == None:  raise SetFontException(message="Failed to set font: None")
-    #### check snipy edit
-    if font not in self.fonts.keys():  raise SetFontException(message="Font: {}, is not a valid font.".format(font))
+    if font == None:
+      raise SetFontException(message="Failed to set font: None")
+    if font not in self.fonts.keys():
+      raise SetFontException(message="Font: {}, is not a valid font.".format(font))
     else:
       ImageFont.truetype(self.fonts[font])
-    ####
 
   def write(self, string=None, delay=0.05):
     for character in string:
