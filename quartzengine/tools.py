@@ -21,14 +21,14 @@ class loops(object):
 
   @property
   def seconds(self):
-    return self.seconds
+    return self._seconds
 
   @seconds.setter
-  def seconds(self, value: float):
-    self.seconds = value
+  def seconds(self, value: int):
+    self._seconds = value
 
   def __init__(self):
-    self.seconds = 0.0
+    self._seconds = 0
     self.task = self.loop
 
   def loop(self):
@@ -37,4 +37,4 @@ class loops(object):
   def start(self, *args, **kwargs):
     while True:
       self.loop()
-      sleep(self.seconds)
+      sleep(self._seconds)
