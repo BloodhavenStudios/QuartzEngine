@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://cdn.discordapp.com/attachments/973602611179712532/976310681655734303/quartzenginelogo.png" width="200" alt="Quartz Engine"/>
+<img src="[https://cdn.discordapp.com/attachments/973602611179712532/976310681655734303/quartzenginelogo.png](https://replit.com/@CodeWithMatthew/QuartzEngine#quartz.png)" width="200" alt="Quartz Engine"/>
 <h1>Quartz Engine</h1>
 
 <div>
