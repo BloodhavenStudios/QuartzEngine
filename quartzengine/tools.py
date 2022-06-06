@@ -18,24 +18,27 @@ class Switch(object):
       else:  self.current_swit ch = 0
       return self.toggles[self.current_switch]
 
-class loops(Thread):
-
+class loops(object):
+  
   @property
-  def seconds(self):
-    return self._seconds
-
-  @seconds.setter
-  def seconds(self, value: int):
-    self._seconds = value
-
-  def __init__(self):
-    self._seconds = 0
-    self.task = self.loop
-
-  def loop(self):
-    pass
-
-  def run(self, *args, **kwargs):
-    while True:
-      self.loop()
-      sleep(self._seconds)
+	def seconds(self):
+		return self._seconds
+		
+	@seconds.setter
+	def seconds(self, value: float):
+		self._seconds = value
+	
+	def __init__(self):
+		self._seconds = 0.0
+		
+	def loop(self):
+		pass
+		
+	def loop_process(self):
+		while True:
+			self.loop()
+			sleep(self._seconds)
+			
+	def start(self):
+		thread = Thread(target=self.loop_process, daemon=True)
+		thread.start()
