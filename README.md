@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="[https://cdn.discordapp.com/attachments/973602611179712532/976310681655734303/quartzenginelogo.png](https://replit.com/@CodeWithMatthew/QuartzEngine#quartz.png)" width="200" alt="Quartz Engine"/>
+<img src="https://github.com/BloodhavenStudios/QuartzEngine/blob/main/logo.png" width="200" alt="Quartz Engine"/>
 <h1>Quartz Engine</h1>
 
 <div>
@@ -23,6 +23,7 @@ if you have any questions, feel free to ask it on this server.
 
 ## Features
 - Animations
+- Tools
 - Scenes
 - Game Objects
 - Prefabs
@@ -42,12 +43,7 @@ pip install git+https://github.com/BloodhavenStudios/QuartzEngine
 View all of our examples [here](https://github.com/BloodhavenStudios/QuartzEngine/tree/main/examples)
 
 ## Contributing 
-If you gave a suggestion that would make this better, please fork the repo and create a pull request. Dont forget to give the project a star!
-1. Fork the project.
-2. Create your feature branch
-3. Commit your changes
-4. push to branch
-
+If you have a suggestion that would make this better, please go to the [official discord server](https://discord.gg/nGZ3pH5Rq3) and make the suggestion under [┣💡︱𝖲𝗎𝗀𝗀𝖾𝗌𝗍𝗂𝗈𝗇𝗌](https://discord.com/channels/751537610798923776/983132575256166460)
 
 ## License
 This product is under the MIT License
