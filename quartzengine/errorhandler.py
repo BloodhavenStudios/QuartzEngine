@@ -11,9 +11,7 @@ __all__ = (
   "MapException",
   
   "ToolsException",
-    "PoolException",
-  
-  "ClientException"
+    "PoolException"
 
 )
 
