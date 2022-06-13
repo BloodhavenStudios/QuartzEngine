@@ -59,7 +59,8 @@ class Engine(object):
 
   def getkey(self):
     key = getkey()
-    return self.keys[key.lower()]
+    try:  return self.keys[key.lower()]
+    except:  return self.keys[key]
     
   def rest(self, duration=None):
     
