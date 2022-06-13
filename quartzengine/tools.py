@@ -23,27 +23,27 @@ class Switch(object):
 class loops(object):
   
   @property
-	def seconds(self):
-		return self._seconds
+  def seconds(self):
+    return self._seconds
 		
-	@seconds.setter
-	def seconds(self, value: float):
-		self._seconds = value
+  @seconds.setter
+  def seconds(self, value: float):
+    self._seconds = value
 	
-	def __init__(self):
-		self._seconds = 0.0
+  def __init__(self):
+    self._seconds = 0.0
 		
-	def loop(self):
-		pass
+  def loop(self):
+    pass
 		
-	def loop_process(self):
-		while True:
-			self.loop()
-			sleep(self._seconds)
-			
-	def start(self):
-		thread = Thread(target=self.loop_process, daemon=True)
-		thread.start()
+  def loop_process(self):
+    while True:
+      self.loop()
+      sleep(self._seconds)
+
+  def start(self):
+    thread = Thread(target=self.loop_process, daemon=True)
+    thread.start()
 
 class Pool(object):
 
