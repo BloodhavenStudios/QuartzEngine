@@ -17,7 +17,7 @@ class Switch(object):
     
     def toggle(self):
       if self.current_switch == 0:  self.current_switch += 1
-      else:  self.current_swit ch = 0
+      else:  self.current_switch = 0
       return self.toggles[self.current_switch]
 
 class loops(object):
