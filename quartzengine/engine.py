@@ -7,6 +7,8 @@ from sys import stdout
 from time import sleep
 from getkey import getkey, keys
 
+__all__ = ["Engine"]
+
 class Engine(object):
 
   @property
@@ -57,7 +59,7 @@ class Engine(object):
 
   def getkey(self):
     key = getkey()
-    return key.lower()
+    return self.keys[key.lower()]
     
   def rest(self, duration=None):
     

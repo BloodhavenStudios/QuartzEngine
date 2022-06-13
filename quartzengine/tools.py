@@ -1,7 +1,9 @@
+from .errorhandler import *
 from threading import Thread
 from time import sleep
+from random import choice
 
-__all__ = ("Switch", "loops")
+__all__ = ("Switch", "loops", "Pool")
 
 class Switch(object):
 
@@ -42,3 +44,32 @@ class loops(object):
 	def start(self):
 		thread = Thread(target=self.loop_process, daemon=True)
 		thread.start()
+
+class Pool(object):
+
+  def __init__(self, loot_table: dict=None):
+    self.loot_table = loot_table
+    self.chances = []
+
+  def process_errors(self):
+    
+    if self.loot_table == None:
+      raise PoolException(message="loot_pool not provided.")
+
+    total = 0
+    for key in self.loot_table:
+      total += self.loot_table[key]
+    if total >= 99:
+      raise PoolException(message="Pool total is under 100 please keep the total loot pool at 100")
+    if total >= 101:
+      raise PoolException(message="Pool total is over 100 please keep the total loot pool at 100")
+
+  def roll(self):
+    self.process_errors()
+
+    self.loot_table = []
+    for key in self.loot_table:
+      percent = self.loot_table[key]
+      for i in range(percent):  self.chances.append(key)
+
+    return choice(self.chances)

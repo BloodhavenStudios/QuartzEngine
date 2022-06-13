@@ -2,6 +2,8 @@ from sys import stdout
 from time import sleep
 from .errorhandler import *
 
+__all__ = ["Animation"]
+
 class Animation(object):
 
   def __init__(self, engine=None, animation=None):
