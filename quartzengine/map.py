@@ -1,6 +1,8 @@
 from .errorhandler import *
 from sys import stdout
 
+__all__ = ["Map"]
+
 class Map(object):
 
   def __init__(self,

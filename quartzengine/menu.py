@@ -1,3 +1,6 @@
+
+__all__ = ["Menu"]
+
 class Menu(object):
 
   def __init__(self, app, scene, options, design, input_text):
