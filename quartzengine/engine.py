@@ -30,10 +30,10 @@ class Engine(object):
                  "q": "q", "r": "r", "s": "s", "t": "t",
                  "u": "u", "v": "v", "w": "w", "x": "x",
                  "y": "y","z": "z",
-                 "escape": keys.ESCAPE,
-                 "backspace": keys.BACKSPACE,
-                 "space": keys.SPACE,
-                 "tab": keys.TAB}
+                 "escape": keys.ESCAPE, "\x1b": keys.ESCAPE,
+                 "backspace": keys.BACKSPACE, "\x08": keys.BACKSPACE,
+                 "space": keys.SPACE, " ": keys.SPACE,
+                 "tab": keys.TAB, "\t": keys.TAB}
     
     self.scenes = [self.root]
     self.current_scene = 0
