@@ -33,7 +33,11 @@ class Engine(object):
                  "escape": keys.ESCAPE, "\x1b": keys.ESCAPE,
                  "backspace": keys.BACKSPACE, "\x08": keys.BACKSPACE,
                  "space": keys.SPACE, " ": keys.SPACE,
-                 "tab": keys.TAB, "\t": keys.TAB}
+                 "tab": keys.TAB, "\t": keys.TAB,
+                 "up_arrow": keys.UP,
+                 "down_arrow": keys.DOWN,
+                 "left_arrow": keys.LEFT,
+                 "right_arrow": keys.RIGHT}
     
     self.scenes = [self.root]
     self.current_scene = 0
@@ -62,10 +66,12 @@ class Engine(object):
     except:
       raise SceneException(scene)
 
-  def getkey(self):
+  def key_press(self):
     key = getkey()
-    try:  return self.keys[key.lower()]
-    except:  key
+    try:
+      return self.keys[key.lower()]
+    except:
+      return key
     
   def rest(self, duration=None):
     
@@ -90,7 +96,7 @@ class Engine(object):
       return sleep(time)
     
   def on_error(self, text):
-    Display.write(text)
+    self.Display.write(text)
     stdout.flush()
     input()
 
