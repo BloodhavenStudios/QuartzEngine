@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "QuartzEngine"
-version = "0.0.3"
+version = "0.0.4"
 description = "An advanced game-engine for creating advanced text-based games in the terminal."
 readme = "README.md"
 authors = [{ name = "BloodhavenStudios", email = "bloodhavenstudios2020@gmail.com" }]
@@ -25,7 +25,6 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
-    "https://github.com/li-rupert/getkey",
     "pillow",
     "fonts",
     "font-amatic-sc",
