@@ -117,7 +117,7 @@ class Engine(object):
   def start(self):
     self.setup()
     try:
-      if os.name == "nt":  os.system(f"title {str(self.terminal_name)}")
-      else:  os.system("""echo -n -e "\033]0;{}\007""".format(str(self.terminal_name)))
+      if os.name == "nt":  os.system(f"title {str(self.name)}")
+      else:  os.system("""echo -n -e "\033]0;{}\007""".format(str(self.name)))
     except:  pass
     self.scenes[0]()
