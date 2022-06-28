@@ -1,5 +1,5 @@
 colorama
-https://github.com/li-rupert/getkey
+github.com/li-rupert/getkey
 pillow
 fonts
 font-amatic-sc
