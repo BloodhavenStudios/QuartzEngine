@@ -39,7 +39,7 @@ setup(
   license="MIT License",
   long_description=README,
   long_description_content_type="text/markdown",
-  url="https://replit.com/CodeWithMatthew/QuartzEngine",
+  url="https://github.com/BloodhavenStudios/QuartzEngine",
   packages=["quartzengine"],
   python_requires=">=3.8",
   classifiers=[
