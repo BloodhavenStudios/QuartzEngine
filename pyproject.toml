@@ -25,7 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
-    "getkey",
+    "git+https://github.com/li-rupert/getkey",
     "pillow",
     "fonts",
     "font-amatic-sc",
