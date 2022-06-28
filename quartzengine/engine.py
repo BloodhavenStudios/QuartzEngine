@@ -5,7 +5,14 @@ import json
 import os
 from sys import stdout
 from time import sleep
-from getkey import getkey, keys
+
+try:
+  from getkey import getkey, keys
+except ImportError:
+  try:
+    os.system("pip install git+https://github.com/li-rupert/getkey")
+  except:
+    input("Cannot install dependency. Please make sure you have git installed on your computer.")
 
 __all__ = ["Engine"]
 
