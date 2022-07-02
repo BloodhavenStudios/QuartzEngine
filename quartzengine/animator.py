@@ -26,4 +26,4 @@ class Animation(object):
         self.engine.Display.clear()
         print(f"{frame}")
         sleep(delay_between_frames)
-      Display.clear()
+      self.engine.Display.clear()

@@ -3,33 +3,37 @@ __all__ = ["Menu"]
 
 class Menu(object):
 
-  def __init__(self, app, scene, options, design, input_text):
+  def __init__(self, engine, options, select):
 
-    self.app = app
-    self.scene = scene
-    
+    self.engine = engine
     self.options = options
-    self.makeOptions = [""]
+    self.current_selected = 0
+    if select in self.engine.Display.colours:
+      color = self.engine.Display.select
 
-    if options == []:
+    if self.options == []:
       pass
     else:
-      i = 1
-      for option in self.options:
-        self.makeOptions.append(option)
-        print(f"{i}{design} {option}")
-        i += 1
+      for option, i in enumerate(self.options):
+        if self.current_selected == i:
+          print(color + option + self.engine.Display.reset)
+        else:
+          print(option)
 
-    self.choicePick = input(f"{input_text} ")
-
-  def on_use(self, option=None, action=None):
-    i=1
-    for Option in self.options:
-      if option != len(self.choicePick):
-        self.app.set_scene(int(self.scene))
-      elif int(self.choicePick) == int(option):
-        action()
+    selected = False
+    while not selected:
+      if self.engine.key("w") or self.engine.key("up_arrow"):
+        if self.current_selected != 0 and self.current_selected != int(len(self.options)-1):
+          self.current_selected += 1
+      if self.engine.key("s") or self.engine.key("down_arrow"):
+        if self.current_selected != 0 and self.current_selected != int(len(self.options)-1):
+          self.current_selected -= 1
+      if self.engine.key("enter") or self.engine.key("space"):
+        selected = True
         break
-      elif int(self.choicePick) != int(option):
-        self.app.set_scene(int(self.scene))
-      else:  i += 1
+    
+  def on_click(self, option, func):
+    if self.selected == option:
+      func()
+    else:
+      pass

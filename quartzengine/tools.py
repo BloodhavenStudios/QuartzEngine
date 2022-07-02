@@ -20,6 +20,8 @@ class Switch(object):
       else:  self.current_switch = 0
       return self.toggles[self.current_switch]
 
+
+
 class loops(object):
   
   @property
@@ -44,6 +46,8 @@ class loops(object):
   def start(self):
     thread = Thread(target=self.loop_process, daemon=True)
     thread.start()
+
+
 
 class Pool(object):
 

@@ -16,6 +16,9 @@ class display(object):
   def __init__(self):
     self.fonts = {"AmaticSC": AmaticSC, "Roboto": Roboto, "Caladea": Caladea}
     
+    self.colours = [self.red, self.yellow, self.green, self.blue, self.magenta, self.cyan, self.white, self.black,
+                    self.lightred, self.lightyellow, self.lightgreen, self.lightblue, self.lightmagenta, self.lightcyan]
+
     self.red = self.red()
     self.yellow = self.yellow()
     self.green = self.green()
