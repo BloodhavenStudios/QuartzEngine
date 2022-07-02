@@ -80,14 +80,11 @@ class Engine(object):
 
   def key(self, key):
     press = getkey()
-    try:
-      if key == self.keys[key]:
-        if press == key:
-          return True
-        else:
-          return False
-    except:
-      pass
+    if key in self.keys:
+      if press == key:
+        return True
+      else:
+        return False
     
   def rest(self, duration=None):
     

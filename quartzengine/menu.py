@@ -8,8 +8,10 @@ class Menu(object):
     self.engine = engine
     self.options = options
     self.current_selected = 0
+
+    color = self.engine.Display.white
     if select in self.engine.Display.colours:
-      color = self.engine.Display.select
+      color = select
 
     if self.options == []:
       pass
@@ -33,7 +35,7 @@ class Menu(object):
         break
     
   def on_click(self, option, func):
-    if self.selected == option:
+    if self.selected == self.options[option]:
       func()
     else:
       pass
