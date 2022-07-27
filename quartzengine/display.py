@@ -3,6 +3,7 @@ from sys import stdout
 from time import sleep
 import os
 from .errorhandler import *
+from typing import Union
 
 from PIL import ImageFont
 from fonts.ttf import (
@@ -13,7 +14,7 @@ from fonts.ttf import (
 
 class display(object):
 
-  def __init__(self):
+  def __init__(self) -> None:
     self.fonts = {"AmaticSC": AmaticSC, "Roboto": Roboto, "Caladea": Caladea}
     
     self.colours = [self.red, self.yellow, self.green, self.blue, self.magenta, self.cyan, self.white, self.black,
@@ -57,11 +58,11 @@ class display(object):
     
   def reset(self):  return Fore.RESET
 
-  def clear(self):
+  def clear(self) -> None:
     if os.name == "nt":  os.system("cls")
     else:  os.system("clear")
 
-  def set_font(self, font: str = None):
+  def set_font(self, font: str = None) -> None:
 
     if font == None:
       raise SetFontException(message="Failed to set font: None")
@@ -70,7 +71,7 @@ class display(object):
     else:
       ImageFont.truetype(self.fonts[font])
 
-  def write(self, string=None, delay=0.05):
+  def write(self, string: str = None, delay: Union[int, float] = 0.05) -> None:
     for character in string:
       stdout.write(character)
       stdout.flush()
