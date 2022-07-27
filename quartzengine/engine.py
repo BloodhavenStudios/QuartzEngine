@@ -6,6 +6,7 @@ import json
 import os
 from sys import stdout
 from time import sleep
+from typing import Dict, Any
 
 try:
   from getkey import getkey, keys
@@ -24,14 +25,14 @@ __all__ = ["Engine"]
 class Engine(object):
 
   @property
-  def title(self):
+  def title(self) -> str:
     return self.name
 
   @title.setter
-  def title(self, value: str):
+  def title(self, value: str) -> None:
     self.name = value
 
-  def __init__(self):
+  def __init__(self) -> None:
     self.name = f"QuartzEngine | {os.path.basename(__file__)}"
     self.Display = display()
 
@@ -49,18 +50,19 @@ class Engine(object):
       "up_arrow": keys.UP,
       "down_arrow": keys.DOWN,
       "left_arrow": keys.LEFT,
-      "right_arrow": keys.RIGHT}
+      "right_arrow": keys.RIGHT
+    }
     
     self.scenes = [self.root]
     self.current_scene = 0
 
-  def setup(self):
+  def setup(self) -> None:
     pass
 
-  def root(self):
+  def root(self) -> None:
     print("Default Scene")
 
-  def set_scene(self, scene=None):
+  def set_scene(self, scene=None) -> None:
     if scene == None:
       if self.current_scene != len(self.scenes):
         self.current_scene += 1
@@ -78,7 +80,7 @@ class Engine(object):
     except:
       raise SceneException(scene)
 
-  def key(self, key):
+  def key(self, key: str) -> Bool:
     press = getkey()
     if key in self.keys:
       if press == key:
@@ -86,7 +88,7 @@ class Engine(object):
       else:
         return False
     
-  def rest(self, duration=None):
+  def rest(self, duration: str = None):
     
     timedict = {"s": 1, "m": 60, "h": 3600}
     smh = duration[-1:]
@@ -108,21 +110,21 @@ class Engine(object):
       
       return sleep(time)
     
-  def on_error(self, text):
+  def on_error(self, text: str) -> None:
     self.Display.write(text)
     stdout.flush()
     input()
 
-  def save(self, data):
+  def save(self, data: Dict[Any]) -> None:
     with open("savedata.json", "w") as f:
       json.dump(data, f, indent=4)
 
-  def load(self):
+  def load(self) -> Dict[Any, Any]:
     with open("savedata.json", "r") as f:
       data = json.load(f)
     return data
 
-  def start(self):
+  def start(self) -> None:
     self.setup()
     if os.name == "nt":
       os.system(f"title {str(self.terminal_name)}")
