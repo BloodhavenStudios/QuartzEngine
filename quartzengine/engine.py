@@ -80,7 +80,7 @@ class Engine(object):
     except:
       raise SceneException(scene)
 
-  def key(self, key: str) -> Bool:
+  def key(self, key: str) -> bool:
     press = getkey()
     if key in self.keys:
       if press == key:
