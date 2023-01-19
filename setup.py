@@ -27,7 +27,7 @@ setup(
     description="An advanced game-engine for creating advanced text-based games in the terminal.",
     extras_require=extras,
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=["colorama", "git+https://github.com/li-rupert/getkey"],
     license="MIT License",
     long_description=README,
     long_description_content_type="text/markdown",
