@@ -6,7 +6,7 @@ from setuptools import setup
 
 VERSION = "0.1.0"
 
-PACKAGE_NAME = "Quartz"
+PACKAGE_NAME = "QuartzEngine"
 HERE = path.abspath(path.dirname(__file__))
 
 with open("README.md", "r", encoding="utf-8") as f:
@@ -32,7 +32,7 @@ setup(
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/BloodhavenStudios/QuartzEngine",
-    packages=["quartzengine"],
+    packages=["Quartz"],
     python_requires=">=3.8",
     classifiers=[
         "Intended Audience :: Developers",
