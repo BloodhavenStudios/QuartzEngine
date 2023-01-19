@@ -14,6 +14,7 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
     requirements = f.read()
 
 try:
+    VERSION = ""
     VERSION = VERSION_NUMBER if VERSION_NUMBER else environ["TRAVIS_TAG"].lstrip("v")
 except KeyError:
     with open(path.join(HERE, PACKAGE_NAME, "const.py"), encoding="utf-8") as fp:
