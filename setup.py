@@ -4,7 +4,7 @@ from os import path, environ
 
 from setuptools import setup
 
-VERSION = 0.1.0
+VERSION = "0.1.0"
 
 PACKAGE_NAME = "Quartz"
 HERE = path.abspath(path.dirname(__file__))
