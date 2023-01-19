@@ -1,4 +1,4 @@
-from .errorhandler import *
+from .errorHandler import *
 
 import os
 from sys import stdout
