@@ -1,6 +1,2 @@
 colorama
-pillow
-fonts
-font-amatic-sc
-font-roboto
-font-caladea
+git+https://github.com/li-rupert/getkey

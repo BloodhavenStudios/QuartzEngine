@@ -25,11 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
-    "pillow",
-    "fonts",
-    "font-amatic-sc",
-    "font-roboto",
-    "font-caladea"
+    "git+https://github.com/li-rupert/getkey"
 ]
 requires-python = ">=3.8"
 
