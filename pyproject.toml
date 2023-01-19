@@ -1,0 +1,37 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "QuartzEngine"
+version = "0.0.4"
+description = "An advanced game-engine for creating advanced text-based games in the terminal."
+readme = "README.md"
+authors = [{ name = "BloodhavenStudios", email = "bloodhavenstudios2020@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "Intended Audience :: Developers",
+    "Lincense :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Internet",
+    "Topic :: Software Development :: Libaries :: Python Modules",
+    "Topic :: Software Development :: Libaries",
+    "Topic :: Utilities",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "colorama",
+    "pillow",
+    "fonts",
+    "font-amatic-sc",
+    "font-roboto",
+    "font-caladea"
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/BloodhavenStudios/QuartzEngine"
