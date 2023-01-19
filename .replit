@@ -1,4 +1,0 @@
-run = "python 'Quartz/test.py'"
-
-[nix]
-channel = "stable-22_11"
