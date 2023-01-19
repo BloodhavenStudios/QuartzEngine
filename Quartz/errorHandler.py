@@ -1,6 +1,8 @@
 
 __all__ = (
-    
+    QuartzEngineException,
+        SceneException,
+        WaitException
 )
 
 class QuartzEngineException(Exception):
