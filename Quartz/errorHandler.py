@@ -1,9 +1,9 @@
 
-__all__ = [
+__all__ = (
     QuartzEngineException,
         SceneException,
         WaitException
-]
+)
 
 class QuartzEngineException(Exception):
     pass
