@@ -4,6 +4,8 @@ from os import path, environ
 
 from setuptools import setup
 
+VERSION = 0.1.0
+
 PACKAGE_NAME = "Quartz"
 HERE = path.abspath(path.dirname(__file__))
 
@@ -12,13 +14,6 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 with open("requirements.txt", "r", encoding="utf-8") as f:
     requirements = f.read()
-
-try:
-    with open(path.join(HERE, PACKAGE_NAME, "const.py"), encoding="utf-8") as fp:
-        VERSION = re.search('version = "([^"]+)"', fp.read()).group(1)
-except NameError:
-    with open(path.join(HERE, PACKAGE_NAME, "const.py"), encoding="utf-8") as fp:
-        VERSION = re.search('version = "([^"]+)"', fp.read()).group(1)
 
 extras = {
     "lint": ["colorama", "getkey"]
