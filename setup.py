@@ -5,7 +5,7 @@ from os import path, environ
 from setuptools import setup
 
 PACKAGE_NAME = "Quartz"
-HERE = path.abspath(path.dirname(file))
+HERE = path.abspath(path.dirname(__file__))
 
 with open("README.md", "r", encoding="utf-8") as f:
     README = f.read()
