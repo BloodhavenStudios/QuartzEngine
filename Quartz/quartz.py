@@ -2,25 +2,24 @@ from .graphicsEngine import GraphicsEngine
 from .errorHandler import *
 
 import os
-import attrs
 
-__all__ = ["Engine", "GameObject"]
-
+__all__ = ["Engine", "GameObject", "RigidBody"]
 
 
-@attrs.define(kw_only=True, repr=True)
-class RigidBody:
-    is_collidible: bool = False
-    collides_with: list = []
-    uses_gravity: bool = True
 
-@attrs.define(kw_only=True, repr=True)
+def RigidBody(**kwargs):
+        is_collidible = kwargs.get("is_collidible", False)
+        collides_with = kwargs.get("collides_with", [])
+        uses_gravity = kwargs.get("uses_gravity", True)
+
+@dataclass
 class GameObject:
     texture: str = "#"
-    rigid_body: RigidBody
+    rigidbody = RigidBody()
+
     X: int = 0
     Y: int = 0
-    vector: list[int] = [X, Y]
+    Vector2: list = [0, 0]
 
 
 
