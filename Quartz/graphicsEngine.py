@@ -6,7 +6,7 @@ from time import sleep
 from colorama import Fore
 import string
 
-__all__ = [GraphicsEngine]
+__all__ = ["GraphicsEngine"]
 
 class GraphicsEngine:
 

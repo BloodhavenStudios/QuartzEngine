@@ -1,5 +1,7 @@
 from getkey import getkey, keys
 
+__all__ = ["Input"]
+
 class Input:
 
     def __init__(self):
