@@ -20,6 +20,16 @@ class Map(object):
     def __init__(self, map: list=None):
         self.map = map
 
+        Yy = 1
+        Xx = 0
+        for y in self.map: 
+            for x in y:
+                x.X = Xx
+                x.Y = Yy
+                Xx += 1
+            Yy += 1
+            Xx = 0
+
     def DrawMap(self):
         for y in self.map:
             for x in y:

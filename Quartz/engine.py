@@ -14,13 +14,13 @@ def RigidBody(**kwargs):
 
 class GameObject:
 
-    def __init__(self, texture: str, rigidbody):
-        self.texture: str = "#"
+    def __init__(self, texture: str="#", rigidbody=RigidBody()):
+        self.texture = texture
         self.rigidbody = RigidBody()
 
-        self.X: int = 0
-        self.Y: int = 0
-        self.Vector2: list = [self.X, self.Y]
+        self.X = 0
+        self.Y = 0
+        self.Vector2 = [self.X, self.Y]
 
 
 
