@@ -4,7 +4,7 @@ from .errorHandler import *
 import os
 import attrs
 
-__all__ = ["Engine", "gameObject"]
+__all__ = ["Engine", "GameObject"]
 
 
 
