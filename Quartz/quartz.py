@@ -8,18 +8,19 @@ __all__ = ["Engine", "GameObject", "RigidBody"]
 
 
 def RigidBody(**kwargs):
-        is_collidible = kwargs.get("is_collidible", False)
-        collides_with = kwargs.get("collides_with", [])
-        uses_gravity = kwargs.get("uses_gravity", True)
+    is_collidible = kwargs.get("is_collidible", False)
+    collides_with = kwargs.get("collides_with", [])
+    uses_gravity = kwargs.get("uses_gravity", True)
 
-@dataclass
 class GameObject:
-    texture: str = "#"
-    rigidbody = RigidBody()
 
-    X: int = 0
-    Y: int = 0
-    Vector2: list = [0, 0]
+    def __init__(self, texture: str, rigidbody):
+        self.texture: str = "#"
+        self.rigidbody = RigidBody()
+
+        self.X: int = 0
+        self.Y: int = 0
+        self.Vector2: list = [self.X, self.Y]
 
 
 
