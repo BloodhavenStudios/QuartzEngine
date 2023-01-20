@@ -1,6 +1,7 @@
 from .input import Input
 from colorama import Fore
 
+"""
 __all__ = ["Menu"]
 
 Input = Input()
@@ -189,3 +190,4 @@ class Pool(object):
       for i in range(percent):  self.chances.append(key)
 
     return choice(self.chances)
+"""
