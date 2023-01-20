@@ -26,7 +26,7 @@ class GameObject:
 
 class SceneManager:
 
-    def __init__(self, display, default_scene: function):
+    def __init__(self, display, default_scene):
         self.display = display
         
         self.scenes = [default_scene]
