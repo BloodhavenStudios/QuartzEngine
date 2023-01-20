@@ -5,14 +5,6 @@ __all__ = ["Menu"]
 
 Input = Input()
 
-class Menu:
-
-    def __init__(self, options: list, selection_color):
-        self.options = options
-        self.currently_selected = 0
-
-        if
-
 class Menu(object):
 
   def __init__(self, engine, options, select):
