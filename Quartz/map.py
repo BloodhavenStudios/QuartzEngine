@@ -35,4 +35,5 @@ class Map(object):
             for x in y:
                 stdout.flush()
                 stdout.write(x.texture)
+            print("")
         print("")
