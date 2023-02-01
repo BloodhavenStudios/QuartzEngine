@@ -19,7 +19,7 @@ try:
     if environ["TRAVIS"] == "true"
     else environ["VERSION_NUMBER"]
   )
-except KeyError:
+except:
   with open(path.join(HERE, PACKAGE_NAME, "const.py"), encoding="utf-8") as fp:
     VERSION = re.search('__version__ = "([^"]+)"', fp.read()).group(1)
 
