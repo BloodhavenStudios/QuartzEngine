@@ -40,7 +40,7 @@ setup(
   long_description=README,
   long_description_content_type="text/markdown",
   url="https://github.com/BloodhavenStudios/QuartzEngine",
-  packages=["quartzengine"],
+  packages=["Quartz"],
   python_requires=">=3.8",
   classifiers=[
     "Intended Audience :: Developers",
