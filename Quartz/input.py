@@ -25,9 +25,9 @@ class Input:
         }
 
     def GetKey(self):
-        input = GetKey()
+        input = getkey(blocking=True)
 
         if input in self.keys:
-            return True
+            return self.keys[input]
         else:
             return False

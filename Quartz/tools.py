@@ -49,7 +49,7 @@ class loops(object):
     self._seconds = value
 	
   def __init__(self):
-    self._seconds = 0.0
+    self._seconds = 0.0  
 		
   def loop(self):
     pass

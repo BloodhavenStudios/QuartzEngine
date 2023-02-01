@@ -2,15 +2,19 @@ from .graphicsEngine import GraphicsEngine
 from .errorHandler import *
 
 import os
+from time import sleep
+import asyncio
 
 __all__ = ["Engine", "GameObject", "RigidBody"]
 
 
 
-def RigidBody(**kwargs):
-    is_collidible = kwargs.get("is_collidible", False)
-    collides_with = kwargs.get("collides_with", [])
-    uses_gravity = kwargs.get("uses_gravity", True)
+class RigidBody:
+
+    def __init__(self, is_collidible=True, collides_with=[], uses_gravity=False):
+        self.is_collidible = is_collidible
+        self.collides_with = collides_with
+        self.uses_gravity = uses_gravity
 
 class GameObject:
 
@@ -22,6 +26,9 @@ class GameObject:
         self.Y = 0
         self.Vector2 = [self.X, self.Y]
 
+    def update_Vector2(self):
+        if self.Vector2[0] != self.X or self.Vector2[1] != self.Y:
+            self.Vector2 = [self.X, self.Y]
 
 
 class SceneManager:
@@ -50,6 +57,7 @@ class SceneManager:
             self.scenes[self.current_scene-1]()
         else:
             try:
+                self.display.clear()
                 self.current_scene = scene
                 self.scenes[scene]()
             except:

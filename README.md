@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logo.png" width="400" alt="QuartzEngine"/>
+<img src="https://github.com/BloodhavenStudios/QuartzEngine/blob/main/logo.jpeg" width="200" alt="Quartz Engine"/>
 <h1>Quartz Engine</h1>
 
 <div>
