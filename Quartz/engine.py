@@ -1,26 +1,28 @@
+import os
+from time import sleep
+
 from .graphicsEngine import GraphicsEngine
 from .errorHandler import *
 
-import os
-from time import sleep
-import asyncio
-
-__all__ = ["Engine", "GameObject", "RigidBody"]
+__all__: tuple[str, ...] = (
+    "Engine",
+    "GameObject",
+    "RigidBody",
+)
 
 
 
 class RigidBody:
-
     def __init__(self, is_collidible=True, collides_with=[], uses_gravity=False):
         self.is_collidible = is_collidible
         self.collides_with = collides_with
         self.uses_gravity = uses_gravity
 
-class GameObject:
 
+class GameObject:
     def __init__(self, texture: str="#", rigidbody=RigidBody()):
         self.texture = texture
-        self.rigidbody = RigidBody()
+        self.rigidbody = rigidbody
 
         self.X = 0
         self.Y = 0
@@ -32,7 +34,6 @@ class GameObject:
 
 
 class SceneManager:
-
     def __init__(self, display, default_scene):
         self.display = display
         
@@ -64,9 +65,7 @@ class SceneManager:
                 raise SceneException(scene, f"Could not execute: {scene}.")
 
 
-
 class Engine:
-
     @property
     def title(self):
         return self.name
