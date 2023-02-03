@@ -1,9 +1,9 @@
 from getkey import getkey, keys
 
-__all__: tuple[str, ...] = ("Input",)
-
+__all__ = ["Input"]
 
 class Input:
+
     def __init__(self):
 
         self.keys = {
