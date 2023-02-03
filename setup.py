@@ -20,7 +20,7 @@ try:
     else environ["VERSION_NUMBER"]
   )
 except:
-  with open(path.join(HERE, PACKAGE_NAME, "const.py"), encoding="utf-8") as fp:
+  with open(path.join(HERE, PACKAGE_NAME, "__init__.py"), encoding="utf-8") as fp:
     VERSION = re.search('__version__ = "([^"]+)"', fp.read()).group(1)
 
 extras = {

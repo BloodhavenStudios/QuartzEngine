@@ -1,10 +1,9 @@
 
-__all__ = (
+__all__: tuple[str, ...] = (
     "QuartzEngineException",
-        "SceneException",
-        "WaitException"
+    "SceneException",
+    "WaitException",
 )
-
 class QuartzEngineException(Exception):
     pass
 

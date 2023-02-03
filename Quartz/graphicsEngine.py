@@ -1,12 +1,18 @@
-from .errorHandler import *
+
+from typing import Optional
 
 import os
-from sys import stdout
-from time import sleep
-from colorama import Fore
 import string
 
-__all__ = ["GraphicsEngine"]
+from sys import stdout
+from time import sleep
+
+from colorama import Fore
+
+from .errorHandler import *
+
+
+__all__: tuple[str, ...] = ("GraphicsEngine",)
 
 def clear():
     if os.name == "nt":

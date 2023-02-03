@@ -1,11 +1,14 @@
+import os
+from time import sleep
+
 from .graphicsEngine import GraphicsEngine
 from .errorHandler import *
 
-import os
-from time import sleep
-import asyncio
-
-__all__ = ["Engine", "GameObject", "RigidBody"]
+__all__: tuple[str, ...] = (
+    "Engine",
+    "GameObject",
+    "RigidBody",
+)
 
 
 

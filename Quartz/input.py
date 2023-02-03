@@ -1,6 +1,6 @@
 from getkey import getkey, keys
 
-__all__ = ["Input"]
+__all__: tuple[str, ...] = ("Input",)
 
 class Input:
 

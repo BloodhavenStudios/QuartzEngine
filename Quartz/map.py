@@ -1,7 +1,9 @@
-from sys import stdout
-import asyncio
+from typing import Optional
 
-__all__ = ["Map"]
+import asyncio
+from sys import stdout
+
+__all__: tuple[str, ...] = ("Map",)
 
 """
 Example Map
