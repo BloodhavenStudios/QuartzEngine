@@ -12,37 +12,52 @@ fg = Fore
 
 class Menu(object):
 
-  def __init__(self, options, select_color=fg.GREEN, up_key=Input.keys["up_arrow"], down_key=Input.keys["down_arrow"]):
+    def __init__(self, options, select_color=fg.GREEN, up_key=Input.keys["up_arrow"], down_key=Input.keys["down_arrow"]):
 
-    self.options = options
-    self.current_selected = 0
+        self.options = options
+        self.interactions = {}
+        self.current_selected = 0
 
-    if self.options == []:
-      pass
-
-    while(True):
-
-        for item in self.options:
-            if item == self.options[self.current_selected]:
-                print(select_color + item)
-            else:
-                print(fg.RESET + item)
+        self.select_color = select_color
+        self.up_key = up_key
+        self.down_key = down_key
     
-        input = Input.GetKey()
+        if self.options == []:
+          pass
+            
+    def loop(self):
+        while(True):
+    
+            for item in self.options:
+                if item == self.options[self.current_selected]:
+                    print(self.select_color + item)
+                else:
+                    print(fg.RESET + item)
+
+            self.interactions = self.interactions
         
-        if input == up_key:
-            if self.current_selected == 0:
-                self.current_selected = int(len(self.options) - 1)
-            else:
-                self.current_selected -= 1
-        if input == down_key:
-            if self.current_selected ==  int(len(self.options) - 1):
-                self.current_selected = 0
-            else:
-                self.current_selected += 1
-    
-        for item in self.options:
-            stdout.write("\033[F \r")
+            input = Input.GetKey()
+            
+            if input == self.up_key:
+                if self.current_selected == 0:
+                    self.current_selected = int(len(self.options) - 1)
+                else:
+                    self.current_selected -= 1
+            if input == self.down_key:
+                if self.current_selected ==  int(len(self.options) - 1):
+                    self.current_selected = 0
+                else:
+                    self.current_selected += 1
+            if input == Input.keys["enter"]:
+                self.interactions[str(self.current_selected + 1)]["interaction"]()
+                break
+        
+            for item in self.options:
+                stdout.write("\033[F \r")
+
+    def Interaction(self, menu_item, action):
+        self.interactions[str(menu_item)] = {"interaction": action}
+
 
 class Switch(object):
 
