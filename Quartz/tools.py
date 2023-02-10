@@ -1,25 +1,48 @@
 from .input import Input
 from colorama import Fore
+from sys import stdout
 
-"""
-__all__ = ["Menu"]
+__all__: tuple[str, ...] = (
+    "Menu",
+)
 
 Input = Input()
 
+fg = Fore
+
 class Menu(object):
 
-  def __init__(self, engine, options, select):
+  def __init__(self, options, select_color=fg.GREEN, up_key=Input.keys["up_arrow"], down_key=Input.keys["down_arrow"]):
 
-    self.engine = engine
     self.options = options
     self.current_selected = 0
 
-    color = self.engine.Display.white
-    if select in self.engine.Display.colours:
-      color = select
-
     if self.options == []:
       pass
+
+    while(True):
+
+        for item in self.options:
+            if item == self.options[self.current_selected]:
+                print(select_color + item)
+            else:
+                print(fg.RESET + item)
+    
+        input = Input.GetKey()
+        
+        if input == up_key:
+            if self.current_selected == 0:
+                self.current_selected = int(len(self.options) - 1)
+            else:
+                self.current_selected -= 1
+        if input == down_key:
+            if self.current_selected ==  int(len(self.options) - 1):
+                self.current_selected = 0
+            else:
+                self.current_selected += 1
+    
+        for item in self.options:
+            stdout.write("\033[F \r")
 
 class Switch(object):
 
@@ -63,7 +86,7 @@ class loops(object):
     thread = Thread(target=self.loop_process, daemon=True)
     thread.start()
 
-
+"""
 
 class Pool(object):
 
@@ -133,7 +156,7 @@ class Switch(object):
       else:  self.current_switch = 0
       return self.toggles[self.current_switch]
 
-
+"""
 
 class loops(object):
   
@@ -190,4 +213,3 @@ class Pool(object):
       for i in range(percent):  self.chances.append(key)
 
     return choice(self.chances)
-"""

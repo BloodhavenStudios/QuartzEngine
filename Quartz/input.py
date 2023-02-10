@@ -16,6 +16,11 @@ class Input:
             "down_arrow": keys.DOWN,
             "left_arrow": keys.LEFT,
             "right_arrow": keys.RIGHT,
+
+            f"{keys.UP}": keys.UP,
+            f"{keys.DOWN}": keys.DOWN,
+            f"{keys.LEFT}": keys.LEFT,
+            f"{keys.RIGHT}": keys.RIGHT,
             
             "escape": keys.ESCAPE, "\x1b": keys.ESCAPE,
             "backspace": keys.BACKSPACE, "\x08": keys.BACKSPACE,
@@ -25,9 +30,9 @@ class Input:
         }
 
     def GetKey(self):
-        input = getkey(blocking=True)
+        get = getkey()
 
-        if input in self.keys:
-            return self.keys[input]
+        if get in self.keys:
+            return self.keys[get]
         else:
-            return False
+            return get

@@ -34,6 +34,7 @@ class GameObject:
             self.Vector2 = [self.X, self.Y]
 
 
+
 class SceneManager:
 
     def __init__(self, display, default_scene):
@@ -42,14 +43,10 @@ class SceneManager:
         self.scenes = [default_scene]
         self.current_scene = 1
 
-    def AddScene(self, scene=None):
-        if scene == None:
-            raise SceneException(scene, "Scene: {} not Provided!")
-        else:
-            try:
-                self.scenes.append(scene)
-            except:
-                raise SceneException(scene, "Scene: {}, failed to load")
+    def scene(self, func):
+        def scene(*args, **kwargs):
+            self.scenes.append(func)
+        return scene()
     
     def LoadScene(self, scene=None):
         if scene == None:
@@ -81,19 +78,8 @@ class Engine:
     def __init__(self):
         self.name = f"QuartzEngine | {os.path.basename(__file__)}"
 
-        self.GraphicsEngine = GraphicsEngine()
-
-        self.SceneManager = SceneManager(self.GraphicsEngine, self.root)
-
     def setup(self):
         pass
-
-    def root(self):
-        """
-        The default scene QuartzEngine will use when no others are defined.
-        """
-        
-        print("Default Scene")
 
     def wait(self, duration=None):
         timedict = {"s": 1, "m": 60, "h": 3600}
