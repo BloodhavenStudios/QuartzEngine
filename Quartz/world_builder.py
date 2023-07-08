@@ -4,12 +4,11 @@ from sys import stdout
 from time import sleep
 from threading import Thread
 import copy
-from multiprocessing import Pool
 
 from .error_handler import *
 
 __all__: tuple[str, ...] = (
-    "Map",
+    "World",
 )
 
 class World(object):
