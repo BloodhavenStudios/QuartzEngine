@@ -33,8 +33,57 @@ class Color:
         - magenta:   .fromRGB(255, 0, 255)
     """
 
+    class RGB:
+
+        def __init__(self, r: int, g: int, b: int) -> 255:
+            """
+            Initializes the position of the Vector2 object. This is called by __init__ and should not be called directly.
+            
+            Args:
+                r: The Red RGB Point
+                g: The Green RGB Point
+                b: The Blue RGB Point
+            """
+
+            if r > 255 or g > 255 or b > 255:
+                raise ColorException("Invalid RGB values. Values must be between 0 and 255 inclusive.")
+
+            self.r = r
+            self.g = g
+            self.b = b
+
+        def __call__(self):
+            """
+            Returns the r, g and b points of the RGB object. This is useful for debugging the code that calls this method.
+            
+            
+            Returns: 
+                A tuple of ( r g b ) RGB Points of the RGB object
+            """
+
+            return (self.r, self.g, self.b)
+
+        @staticmethod
+        def new(r: int, g: int, b: int) -> 255:
+            """
+            Create a new instance of : class : ` RGB `.
+
+            Args:
+                r: The Red RGB Point
+                g: The Green RGB Point
+                b: The Blue RGB Point
+            
+            Returns: 
+                A new instance of : class : ` RGB `
+            """
+
+            if r > 255 or g > 255 or b > 255:
+                raise ColorException("Invalid RGB values. Values must be between 0 and 255 inclusive.")
+            
+            return RGB(r, g, b)
+
     @staticmethod
-    def set_foreground(RGB):
+    def set_foreground(rgb: type[RGB]):
         """
          Set the foreground color. This is a function that takes a tuple of RGB values and returns a string that can be used in a SETTHEGREET command
          
@@ -45,13 +94,13 @@ class Color:
          	 string of ANSI escape codes that can be used in a string
         """
         
-        if isinstance(RGB, tuple):
-            return f"\033[38;2;{RGB[0]};{RGB[1]};{RGB[2]}m"
+        if isinstance(rgb, RGB):
+            return f"\033[38;2;{rgb()[0]};{rgb()[1]};{rgb()[2]}m"
         else:
             raise ColorException("Invalid RGB value. Expected a tuple of RGB values.")
 
     @staticmethod
-    def set_background(RGB):
+    def set_background(rgb: type[RGB]):
         """
          Set the background color. This is a function that takes a tuple of RGB values and returns a string that can be used in a SET command
          
@@ -62,10 +111,18 @@ class Color:
          	 string of ANSI escape codes that can be used in a string
         """
         
-        if isinstance(RGB, tuple):
-            return f"\033[48;2;{RGB[0]};{RGB[1]};{RGB[2]}m"
+        if isinstance(rgb, RGB):
+            return f"\033[48;2;{rgb()[0]};{rgb()[1]};{rgb()[2]}m"
         else:
             raise ColorException("Invalid RGB value. Expected a tuple of RGB values.")
+
+    @staticmethod
+    def fg(rgb: type[RGB]):
+        Color.set_foreground(rgb)
+
+    @staticmethod
+    def bg(rgb: type[RGB]):
+        Color.set_background(rgb)
 
     @staticmethod
     def reset():
@@ -80,7 +137,7 @@ class Color:
         return "\033[0m"
 
     @staticmethod
-    def rainbowify(string: str=None):
+    def rainbowify(string: type[str]=None):
         """
          Converts a string to Rainbow text.
          
@@ -95,7 +152,7 @@ class Color:
             raise ColorException("Invalid input. Expected a non-empty string.")
 
         string_to_return = ""
-        colors = [(255, 0, 0), (255, 165, 0), (255, 255, 0), (0, 128, 0), (0, 0, 255), (238, 130, 238) ]
+        colors = [(255, 0, 0), (255, 165, 0), (255, 255, 0), (0, 128, 0), (0, 0, 255), (238, 130, 238)]
 
         for i, character in enumerate(string):
             color = colors[i % len(colors)]
@@ -121,7 +178,7 @@ class Color:
         if r > 255 or g > 255 or b > 255:
             raise ColorException("Invalid RGB values. Values must be between 0 and 255 inclusive.")
         else:
-            return (r, g, b)
+            return RGB.new(r,g,b)
 
     @staticmethod
     def fromHEX(hex_code: str="#FFFFFF"):
@@ -145,6 +202,6 @@ class Color:
             r = int(hex_code[0:2], 16)
             g = int(hex_code[2:4], 16)
             b = int(hex_code[4:6], 16)
-            return (r, g, b)
+            return RGB.new(r, g, b)
         except ValueError:
             raise ColorException("Invalid hexadecimal color code. Expected format: #RRGGBB")

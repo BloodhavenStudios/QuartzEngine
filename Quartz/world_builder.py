@@ -64,7 +64,10 @@ class World(object):
     
     def draw_world(self):
         """
-        Draws the world.
+        Draws the ENTIRE world.
+
+        If your world is massive use engine.Camera() to track a Pixel()
+        like the player or something.
         """
         
         output = "\n".join("\033[0m" + "".join(tile.Texture for tile in line) for line in self.world)

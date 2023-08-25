@@ -34,7 +34,7 @@ if you have any questions, feel free to ask it on this server.
 ## Docs
 Come read the docs [here](https://bloodhavenstudios2020.gitbook.io/quartzengine-docs/)
 
-## Install
+## Install Using Git
 ```
 pip install git+https://github.com/BloodhavenStudios/QuartzEngine
 ```

@@ -349,28 +349,32 @@ class SceneController:
             self.scenes.append(func)
         return new_scene()
     
-    def load_scene(self, selection=None):
-        """
-         Load a scene.
-         
-         Args:
-         	 selection: next scene str(++) or The index of the scene
-        """
+    def load_scene(self, scene=None):
+        if scene is None:
+            raise Exception("No scene selection provided.")
         
-        if selection == None:
-            raise Exception
-        elif selection == "++":
-            if int(self.current_scene_index+1) != int(len(self.scenes)-1): 
-                self.current_scene_index += 1
+        if scene == "++" and self.current_scene_index + 1 < len(self.scenes):
+            self.current_scene_index += 1
+            GraphicsEngine.clear()
+            self.scenes[self.current_scene_index]()
+            return
+
+        try:
+            scene = int(scene)
+            if 0 <= scene < len(self.scenes):
                 GraphicsEngine.clear()
-                self.scenes[self.current_scene_index]()
-        else:
-            try:
-                #GraphicsEngine.clear()
-                self.current_scene_index = selection
-                self.scenes[selection]()
-            except:
-                raise SceneException(selection, f"Could not execute: {selection}.")
+                self.current_scene_index = scene
+                self.scenes[scene]()
+                return
+            raise SceneException(scene, f"Scene index {scene} is out of range.")
+        except ValueError:
+            for index, scene_func in enumerate(self.scenes):
+                if scene_func.__name__ == scene:
+                    GraphicsEngine.clear()
+                    self.current_scene_index = index
+                    scene_func()
+                    return
+            raise SceneException(scene, f"Scene '{scene}' not found.")
 
 
 
