@@ -160,8 +160,10 @@ class Pixel(object):
                    self.Vector2 == other.Vector2
         return False
     
-    def update_Vector2(self, X: int, Y: int):
-        self.Vector2 = (X, Y)
+    def update_Vector2(self, vector2: type[Vector2]):
+        if not isinstance(vector2, Vector2):
+            raise ValueError("Must be a valid `Vector2()`")
+        self.Vector2 = (vector2()[0], vector2()[1])
 
     def had_collision(self, direction: str=None):
         direction = direction.lower() if direction is not None else None

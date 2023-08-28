@@ -1,230 +1,235 @@
-from .getkey import getkey, keys
-from .graphics_engine import *
+from typing import Optional, Literal
+
 from sys import stdout
+from threading import Thread, Event
+
+from .graphics_engine import *
+from .error_handler import *
+
+try:
+    from getkey import getkey, keys
+except ImportError:
+    raise QuartzEngineException("You must have 'getkey' installed to use 'tools.py' refer to the docs.")
 
 __all__: tuple[str, ...] = (
     "Menu",
 )
 
-Input = Input()
-
-fg = Fore
-
 class Menu(object):
 
-    def __init__(self, options, select_color=fg.GREEN, up_key=Input.keys["up_arrow"], down_key=Input.keys["down_arrow"]):
+    def __init__(self, options: list[tuple[str, callable]], display: Literal["vertical", "horizonal"], select_color: type[Color.RGB], previous_key: type[keys], next_key: type[keys]):
+        
+        if not isinstance(select_color, Color.RGB):
+           raise ValueError("Must be a valid 'graphics_engine.Color.RGB' object.")
 
+        if display not in ["vertical", "horizonal"]:
+           raise ValueError("Must be 'vertical' or 'horizontal'.")
+        
         self.options = options
-        self.interactions = {}
-        self.current_selected = 0
-
+        self.display = display
         self.select_color = select_color
-        self.up_key = up_key
-        self.down_key = down_key
-    
-        if self.options == []:
-          pass
-            
-    def loop(self):
-        while(True):
-    
-            for item in self.options:
-                if item == self.options[self.current_selected]:
-                    print(self.select_color + item)
-                else:
-                    print(fg.RESET + item)
 
-            self.interactions = self.interactions
-        
-            input = Input.GetKey()
-            
-            if input == self.up_key:
-                if self.current_selected == 0:
-                    self.current_selected = int(len(self.options) - 1)
-                else:
-                    self.current_selected -= 1
-            if input == self.down_key:
-                if self.current_selected ==  int(len(self.options) - 1):
-                    self.current_selected = 0
-                else:
-                    self.current_selected += 1
-            if input == Input.keys["enter"]:
-                self.interactions[str(self.current_selected + 1)]["interaction"]()
+        self.previous_key = previous_key
+        self.next_key = next_key
+
+    def __del__(self):
+        pass
+
+    def run(self):
+        selected_idx: int = 0
+
+        while(True):
+            for idx in self.options:
+                print(f"{idx[0]}" if selected != idx[0] else Color.fg(self.select_color) + f"{idx[0]}" + Color.reset(), end="   " if self.display == "horizontal" else "\n")
+
+            key = getkey()
+
+            if key == self.next_key:
+               selected_idx = (selected_idx + 1) % len(self.options)
+            elif key == self.previous_key:
+               selected_idx = (selected_idx - 1) % len(self.options)
+            elif key == keys.ENTER:
+                _, target_func = self.options[selected_idx]
+                target_func()
+                del self
                 break
-        
-            for item in self.options:
+            
+            for idx in self.options:
                 stdout.write("\033[F \r")
 
-    def Interaction(self, menu_item, action):
-        self.interactions[str(menu_item)] = {"interaction": action}
 
 
-class Switch(object):
+class Switch:
+    """
+    A class to manage toggling between different options.
 
-    def __init__(self, toggle1, toggle2):
-      self.toggles = [toggle1, toggle2]
-      self.current_switch = 1
-      self.toggle()
+    Args:
+        *options: Variable number of options to be toggled.
+
+    Attributes:
+        options (list): List of available options.
+        current_index (int): Index of the currently selected option.
+
+    Methods:
+        get(): Returns the currently selected option.
+        toggle(): Toggles to the next option.
+        set_option(option): Sets the switch to a specific option.
+    """
+
+    def __init__(self, *options):
+        """
+        Initialize the Switch instance with given options.
+
+        Args:
+            *options: Variable number of options to be toggled.
+
+        Raises:
+            ValueError: If the number of options is less than 2.
+        """
+
+        if len(options) < 2:
+            raise ValueError("A Switch should have at least two options.")
+        
+        self.options = options
+        self.current_index = 0
 
     def get(self):
-      return self.toggles[self.current_switch]
-    
+        """
+        Get the currently selected option.
+
+        Returns:
+            The currently selected option.
+        """
+        return self.options[self.current_index]
+
     def toggle(self):
-      if self.current_switch == 0:  self.current_switch += 1
-      else:  self.current_switch = 0
-      return self.toggles[self.current_switch]
+        """
+        Toggle to the next option and return it.
 
+        Returns:
+            The newly toggled option.
+        """
+        self.current_index = (self.current_index + 1) % len(self.options)
+        return self.options[self.current_index]
 
+    def set_option(self, option):
+        """
+        Set the switch to a specific option.
 
-class loops(object):
-  
-  @property
-  def seconds(self):
-    return self._seconds
-		
-  @seconds.setter
-  def seconds(self, value: float):
-    self._seconds = value
-	
-  def __init__(self):
-    self._seconds = 0.0  
-		
-  def loop(self):
-    pass
-		
-  def loop_process(self):
-    while True:
-      self.loop()
-      sleep(self._seconds)
+        Args:
+            option (Any): The option to set the switch to.
 
-  def start(self):
-    thread = Thread(target=self.loop_process, daemon=True)
-    thread.start()
-
-"""
-
-class Pool(object):
-
-  def __init__(self, loot_table: dict=None):
-    self.loot_table = loot_table
-    self.chances = []
-
-  def process_errors(self):
-    
-    if self.loot_table == None:
-      raise PoolException(message="loot_pool not provided.")
-
-    total = 0
-    for key in self.loot_table:
-      total += self.loot_table[key]
-    if total >= 99:
-      raise PoolException(message="Pool total is under 100 please keep the total loot pool at 100")
-    if total >= 101:
-      raise PoolException(message="Pool total is over 100 please keep the total loot pool at 100")
-
-  def roll(self):
-    self.process_errors()
-
-    self.loot_table = []
-    for key in self.loot_table:
-      percent = self.loot_table[key]
-      for i in range(percent):  self.chances.append(key)
-
-    return choice(self.chances)
-    else:
-      for option, i in enumerate(self.options):
-        if self.current_selected == i:
-          print(color + option + self.engine.Display.reset)
+        Raises:
+            ValueError: If the provided option is not in the list of options.
+        """
+        if option in self.options:
+            self.current_index = self.options.index(option)
         else:
-          print(option)
+            raise ValueError(f"'{option}' is not a valid option.")
 
-    selected = False
-    while not selected:
-      if self.engine.key("w") or self.engine.key("up_arrow"):
-        if self.current_selected != 0 and self.current_selected != int(len(self.options)-1):
-          self.current_selected += 1
-      if self.engine.key("s") or self.engine.key("down_arrow"):
-        if self.current_selected != 0 and self.current_selected != int(len(self.options)-1):
-          self.current_selected -= 1
-      if self.engine.key("enter") or self.engine.key("space"):
-        selected = True
-        break
-    
-  def on_click(self, option, func):
-    if self.selected == self.options[option]:
-      func()
-    else:
-      pass
+    def __str__(self):
+        """
+        Return a string representation of the Switch instance.
 
-class Switch(object):
+        Returns:
+            A string representation of the Switch.
+        """
+        return f"Switch({', '.join(map(str, self.options))})"
 
-    def __init__(self, toggle1, toggle2):
-      self.toggles = [toggle1, toggle2]
-      self.current_switch = 1
-      self.toggle()
 
-    def get(self):
-      return self.toggles[self.current_switch]
-    
-    def toggle(self):
-      if self.current_switch == 0:  self.current_switch += 1
-      else:  self.current_switch = 0
-      return self.toggles[self.current_switch]
 
-"""
+class Loops:
+    """
+    A class for running a looping process with adjustable delay.
 
-class loops(object):
+    Args:
+        loop_function (callable): The function to be executed in each loop iteration.
+        initial_delay (float): Initial delay in seconds before the loop starts.
+        delay (float): Delay in seconds between loop iterations.
+
+    Methods:
+        loop_process(): Runs the loop process indefinitely.
+        start(): Starts the loop process in a separate thread.
+    """
   
-  @property
-  def seconds(self):
-    return self._seconds
-		
-  @seconds.setter
-  def seconds(self, value: float):
-    self._seconds = value
-	
-  def __init__(self):
-    self._seconds = 0.0
-		
-  def loop(self):
-    pass
-		
-  def loop_process(self):
-    while True:
-      self.loop()
-      sleep(self._seconds)
+    def __init__(self, loop_function, initial_delay=0.0, delay=1.0):
+        """
+        Initialize the Loops instance.
 
-  def start(self):
-    thread = Thread(target=self.loop_process, daemon=True)
-    thread.start()
+        Args:
+            loop_function (callable): The function to be executed in each loop iteration.
+            initial_delay (float): Initial delay in seconds before the loop starts.
+            delay (float): Delay in seconds between loop iterations.
+        """
+        self._loop_function = loop_function
+        self._stop_event = Event()
+        self._initial_delay = initial_delay
+        self._delay = delay
+
+    def loop_process(self):
+        """
+        Runs the loop process indefinitely.
+        """
+        sleep(self._initial_delay)
+        while not self._stop_event.is_set():
+            self._loop_function()
+            sleep(self._delay)
+
+    def start(self):
+        """
+        Start the loop process in a separate thread.
+        """
+        thread = Thread(target=self.loop_process, daemon=True)
+        thread.start()
+
+    def stop(self):
+        """
+        Stop the loop process by setting the stop event.
+        """
+        self._stop_event.set()
 
 
 
-class Pool(object):
+class Pool:
+    """
+    A class for simulating a pool of items with different drop chances.
 
-  def __init__(self, loot_table: dict=None):
-    self.loot_table = loot_table
-    self.chances = []
+    Args:
+        loot_table (dict): A dictionary containing items as keys and their drop chances as values.
 
-  def process_errors(self):
+    Methods:
+        roll(): Randomly selects an item from the pool based on drop chances.
+    """
     
-    if self.loot_table == None:
-      raise PoolException(message="loot_pool not provided.")
+    def __init__(self, loot_table: type[dict] = None):
+        """
+        Initialize the Pool instance.
 
-    total = 0
-    for key in self.loot_table:
-      total += self.loot_table[key]
-    if total >= 99:
-      raise PoolException(message="Pool total is under 100 please keep the total loot pool at 100")
-    if total >= 101:
-      raise PoolException(message="Pool total is over 100 please keep the total loot pool at 100")
+        Args:
+            loot_table (dict): A dictionary containing items as keys and their drop chances as values.
+        """
 
-  def roll(self):
-    self.process_errors()
+        if loot_table is None:
+            raise PoolException("loot_pool not provided.")
 
-    self.loot_table = []
-    for key in self.loot_table:
-      percent = self.loot_table[key]
-      for i in range(percent):  self.chances.append(key)
+        total = sum(loot_table.values())
+        if total < 100:
+            raise PoolException("Pool total is under 100; please keep the total loot pool at 100")
+        if total > 100:
+            raise PoolException("Pool total is over 100; please keep the total loot pool at 100")
 
-    return choice(self.chances)
+        self.loot_table = loot_table
+
+    def roll(self):
+        """
+        Randomly select an item from the pool based on drop chances.
+
+        Returns:
+            Any: The selected item.
+        """
+
+        chances = []
+        for key, percent in self.loot_table.items():
+            self.chances.extend([key] * percent)
+
+        return random.choice(self.chances)
