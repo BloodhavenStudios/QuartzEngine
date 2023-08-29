@@ -3,6 +3,7 @@ __all__: tuple[str, ...] = (
     "QuartzEngineException",
     "SceneException",
     "ColorException",
+    "PoolException"
 )
 
 class QuartzEngineException(Exception):

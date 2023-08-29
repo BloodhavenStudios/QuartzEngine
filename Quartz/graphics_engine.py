@@ -131,11 +131,11 @@ class Color:
 
     @staticmethod
     def fg(rgb: type[RGB]):
-        Color.set_foreground(rgb)
+        return Color.set_foreground(rgb)
 
     @staticmethod
     def bg(rgb: type[RGB]):
-        Color.set_background(rgb)
+        return Color.set_background(rgb)
 
     @staticmethod
     def reset():

@@ -17,12 +17,12 @@ __all__: tuple[str, ...] = (
 
 class Menu(object):
 
-    def __init__(self, options: list[tuple[str, callable]], display: Literal["vertical", "horizonal"], select_color: type[Color.RGB], previous_key: type[keys], next_key: type[keys]):
+    def __init__(self, options: list[tuple[str, callable]], display: Literal["vertical", "horizontal"], select_color: type[Color.RGB], previous_key: type[keys], next_key: type[keys]):
         
         if not isinstance(select_color, Color.RGB):
            raise ValueError("Must be a valid 'graphics_engine.Color.RGB' object.")
 
-        if display not in ["vertical", "horizonal"]:
+        if display not in ["vertical", "horizontal"]:
            raise ValueError("Must be 'vertical' or 'horizontal'.")
         
         self.options = options
@@ -40,7 +40,11 @@ class Menu(object):
 
         while(True):
             for idx in self.options:
-                print(f"{idx[0]}" if selected != idx[0] else Color.fg(self.select_color) + f"{idx[0]}" + Color.reset(), end="   " if self.display == "horizontal" else "\n")
+                if self.options[selected_idx][0] == idx[0]:
+                    print(Color.set_foreground(self.select_color) + f"{idx[0]}" + Color.reset(), end="   " if self.display == "horizontal" else "\n")
+                else:
+                    print(f"{idx[0]}", end="   " if self.display == "horizontal" else "\n")
+            if self.display == "horizontal":  print()
 
             key = getkey()
 
@@ -54,7 +58,10 @@ class Menu(object):
                 del self
                 break
             
-            for idx in self.options:
+            if self.display == "vertical":
+                for idx in self.options:
+                    stdout.write("\033[F \r")
+            else:
                 stdout.write("\033[F \r")
 
 
