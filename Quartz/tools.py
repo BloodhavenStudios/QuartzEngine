@@ -2,6 +2,7 @@ from typing import Optional, Literal
 
 from sys import stdout
 from threading import Thread, Event
+from time import sleep
 
 from .graphics_engine import *
 from .error_handler import *
@@ -13,6 +14,9 @@ except ImportError:
 
 __all__: tuple[str, ...] = (
     "Menu",
+    "Switch",
+    "Loops",
+    "Pool"
 )
 
 class Menu(object):
