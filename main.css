@@ -74,6 +74,7 @@ html, body {
 	height: 100vh;
 	color: #a8a8a8;
 	background: #0A0A0A;
+	overflow-x: hidden;
 }
 
 content {
@@ -160,6 +161,7 @@ footer .footer-section {
 	flex-direction: row;
 	align-items: center;
 	width: auto;
+	margin-right: 75px;
 }
 
 footer a {
