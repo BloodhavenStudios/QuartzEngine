@@ -19,6 +19,10 @@
 </div>
 
 <script>
+
+await new Promise(resolve => setTimeout(resolve, 500));
+console.log("wait complete.");
+
 const path = window.location.pathname;
 	
 const add_selected = function(id) {
