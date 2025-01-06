@@ -99,34 +99,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-await new Promise(resolve => setTimeout(resolve, 500));
-console.log("wait complete.");
+setTimeout(() => {
+	
+	const path = window.location.pathname;
+	
+	const add_selected = function(id) {
+		document.getElementById(id).classList.add("selected");
+	}
+	
+	switch (path) {
+		case "/QuartzEngine/":
+			add_selected("topnav-home")
+			break;
+		case "/QuartzEngine/about":
+			add_selected("topnav-about")
+			break;
+		case "/QuartzEngine/releases":
+			add_selected("topnav-releases")
+			break;
+		case "/QuartzEngine/docs":
+			add_selected("topnav-docs")
+			break;
+		case "/QuartzEngine/samples":
+			add_selected("topnav-samples")
+			break;
+		case "/QuartzEngine/made-with-quartz":
+			add_selected("topnav-quartz")
+			break;
+		default:
+			break;
+	}
 
-const path = window.location.pathname;
-	
-const add_selected = function(id) {
-	document.getElementById(id).classList.add("selected");
-}
-	
-switch (path) {
-	case "/QuartzEngine/":
-		add_selected("topnav-home")
-		break;
-	case "/QuartzEngine/about":
-		add_selected("topnav-about")
-		break;
-	case "/QuartzEngine/releases":
-		add_selected("topnav-releases")
-		break;
-	case "/QuartzEngine/docs":
-		add_selected("topnav-docs")
-		break;
-	case "/QuartzEngine/samples":
-		add_selected("topnav-samples")
-		break;
-	case "/QuartzEngine/made-with-quartz":
-		add_selected("topnav-quartz")
-		break;
-	default:
-		break;
-}
+	console.log("wait complete.");
+}, 500);
