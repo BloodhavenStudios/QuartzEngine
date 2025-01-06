@@ -1,13 +1,13 @@
 <div class="topnav-section">
-	<a href="./index.html" style="padding: 2.5px;">
+	<a href="/QuartzEngine/" style="padding: 2.5px;">
 		<img alt="Quartz Engine Logo" width="35" height="35" src="./logo.jpeg">
 	</a>
-	<a class="selected" href="./index.html"> Home </a>
-	<a href="./about.html"> About </a>
-	<a href="./releases.html"> Releases </a>
-	<a href="./under-construction.html"> Docs </a>
-	<a href="./under-construction.html"> Samples </a>
-	<a href="./under-construction.html"> Made with Quartz </a>
+	<a href="/QuartzEngine/"> Home </a>
+	<a href="/QuartzEngine/about"> About </a>
+	<a href="/QuartzEngine/releases"> Releases </a>
+	<a href="/QuartzEngine/under-construction"> Docs </a>
+	<a href="/QuartzEngine/under-construction"> Samples </a>
+	<a href="/QuartzEngine/under-construction"> Made with Quartz </a>
 </div>
 
 <div class="topnav-section">
@@ -16,4 +16,35 @@
 			<path d="M11.5 3C6.25125 3 2 7.25363 2 12.5C2 16.6982 4.72175 20.2583 8.49563 21.5131C8.97062 21.6026 9.14479 21.3089 9.14479 21.0563C9.14479 20.8307 9.13688 20.233 9.13292 19.4413C6.49033 20.0145 5.933 18.1667 5.933 18.1667C5.50075 17.0703 4.87613 16.7774 4.87613 16.7774C4.01558 16.1884 4.94263 16.2003 4.94263 16.2003C5.89658 16.2668 6.39771 17.1788 6.39771 17.1788C7.24479 18.6315 8.6215 18.2119 9.16458 17.9688C9.25008 17.3545 9.49471 16.9357 9.76625 16.6982C7.65646 16.4607 5.439 15.6437 5.439 12.0036C5.439 10.9665 5.80713 10.1195 6.41671 9.45446C6.30983 9.21458 5.98921 8.24875 6.49983 6.94013C6.49983 6.94013 7.29546 6.68521 9.11233 7.91388C9.87233 7.7025 10.6798 7.598 11.4873 7.59325C12.2948 7.598 13.1023 7.7025 13.8623 7.91388C15.6673 6.68521 16.463 6.94013 16.463 6.94013C16.9736 8.24875 16.653 9.21458 16.558 9.45446C17.1636 10.1195 17.5317 10.9665 17.5317 12.0036C17.5317 15.6532 15.3111 16.4567 13.1973 16.6903C13.5298 16.9753 13.8386 17.558 13.8386 18.4478C13.8386 19.7192 13.8267 20.7405 13.8267 21.0492C13.8267 21.2986 13.993 21.5955 14.4798 21.5005C18.2806 20.2544 21 16.6919 21 12.5C21 7.25363 16.7464 3 11.5 3Z"></path>
 		</svg>
 	</a>
-</div>
+</div>;
+
+<script>
+const path = window.location.pathname;
+	
+const add_selected = function(id) {
+	document.getElementById(id).classList.add("selected");
+}
+	
+switch (path) {
+	case "/QuartzEngine/":
+		add_selected("topnav-home")
+		break;
+	case "/QuartzEngine/about":
+		add_selected("topnav-about")
+		break;
+	case "/QuartzEngine/releases":
+		add_selected("topnav-releases")
+		break;
+	case "/QuartzEngine/docs":
+		add_selected("topnav-docs")
+		break;
+	case "/QuartzEngine/samples":
+		add_selected("topnav-samples")
+		break;
+	case "/QuartzEngine/made-with-quartz":
+		add_selected("topnav-quartz")
+		break;
+	default:
+		break;
+}
+</script>
