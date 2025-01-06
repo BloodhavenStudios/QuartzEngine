@@ -1,0 +1,53 @@
+.topnav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background: #0A0A0A;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 98vw;
+	height: 4vh;
+	padding: 10px;
+	border-bottom: 1px solid #161616;
+	z-index: 2;
+}
+
+.topnav .topnav-section {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: auto;
+}
+
+.topnav a {
+	color: #a8a8a8;
+	text-decoration: none;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	margin-left: 20px;
+	padding: 10px 15px;
+	border-radius: 10px;
+	border: none;
+}
+
+.topnav a.selected {
+	color: #fff;
+}
+
+.topnav a:hover {
+	color: #fff;
+	background: #161616;
+}
+
+.topnav svg {
+	color: #a8a8a8;
+	border-radius: 10px;
+}
+
+
+.topnav a:hover svg {
+	color: #fff;
+}
